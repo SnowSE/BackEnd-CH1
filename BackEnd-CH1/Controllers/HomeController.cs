@@ -30,7 +30,10 @@ namespace BackEnd_CH1.Controllers
             {
                 Username = "Rusty",
                 Fullname = "Rusty Hermansen",
-                Password = "Password"
+                Password = "Password",
+                Car= "1967 Mustang",
+                Food = "Sushi",
+                Age = 33
 
             };
             var json = JsonConvert.SerializeObject(user, Formatting.Indented);
