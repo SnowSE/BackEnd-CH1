@@ -1,6 +1,47 @@
-﻿@{
+﻿@model Users
+@{
     ViewData["Title"] = "Privacy Policy";
+    ViewData["I like fast cars!"] = "Fast cars are fun!";
 }
 <h1>@ViewData["Title"]</h1>
-
+<p>@ViewBag?.Car</p>
+<p>@ViewBag?.Password</p>
+<p>@ViewData["I like fast cars!"]</p>
 <p>Use this page to detail your site's privacy policy.</p>
+
+<form asp-action="Privacy" asp-controller="Home" method="post">
+    <div>
+        <label asp-for="Username"></label>
+        <input asp-for="Username" />
+        <span asp-validation-for="Username"></span>
+    </div>
+    <div>
+        <label asp-for="Fullname"></label>
+        <input asp-for="Fullname" />
+        <span asp-validation-for="Fullname"></span>
+    </div>
+    <div>
+        <label asp-for="Password"></label>
+        <input asp-for="Password" />
+        <span asp-validation-for="Password"></span>
+    </div>
+    <div>
+        <label asp-for="Car"></label>
+        <input asp-for="Car" />
+        <span asp-validation-for="Car"></span>
+    </div>
+    <div>
+        <label asp-for="Food"></label>
+        <input asp-for="Food" />
+        <span asp-validation-for="Food"></span>
+    </div>
+    <div>
+        <label asp-for="Age"></label>
+        <input asp-for="Age" />
+        <span asp-validation-for="Age"></span>
+    </div>
+    <div>
+        <button type="Submit">Submit</button>
+        <button type="reset">Reset</button>
+    </div>
+</form>

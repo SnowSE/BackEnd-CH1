@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
@@ -27,6 +29,7 @@ namespace BackEnd_CH1
         {
             services.AddDirectoryBrowser();
             services.AddControllersWithViews();
+            services.AddMvc(option => option.EnableEndpointRouting = false);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -44,10 +47,10 @@ namespace BackEnd_CH1
             }
             app.UseStatusCodePages("text/plain", "Status code page, status code{0}");
             app.UseHttpsRedirection();
-            var options = new DefaultFilesOptions();
-            options.DefaultFileNames.Clear();
-            options.DefaultFileNames.Add("mydefault.html");
-            app.UseDefaultFiles(options);
+            //var options = new DefaultFilesOptions();
+            //options.DefaultFileNames.Clear();
+            //options.DefaultFileNames.Add("mydefault.html");
+            //app.UseDefaultFiles(options);
             app.UseStaticFiles();
             app.UseStaticFiles(new StaticFileOptions
             {
@@ -73,6 +76,19 @@ namespace BackEnd_CH1
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            app.UseMvc(//routes =>
+            //{
+            //    //routes.MapRoute(
+            //    //    name:"car",
+            //    //    template: "mycar/{id:int}",
+            //    //    defaults: new {Controller= "Car", Action="Story"}
+            //    //    );
+            //    routes.MapRoute(
+            //        name: "default",
+            //        template: "{controller=Home}/{action=Index}/{id?}");
+            //}
+            );
         }
     }
 }
